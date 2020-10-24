@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性：名称空间， 写接口的全限定名-->
+<mapper namespace="com.wlr.health.dao.CheckItemDao">
+
+    <!--select标签用于插叙；  id属性值就是接口的方法名，
+        resultType ：返回值的类型
+                    如果是集合，写泛型即可；
+    -->
+
+    <!--查询所有检查项-->
+    <select id="findAll" resultType="com.wlr.health.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+    </select>
+
+    <!--添加检查项-->
+    <insert id="add">
+        INSERT INTO t_checkitem(id,code,name,sex,age,price,type,attention,remark)
+	VALUES(null,#{code},#{name},#{sex},#{age},#{price},#{type},#{attention},#{remark})
+    </insert>
+
+    <!--//根据检查项id查询检查组-->
+    <select id="findByCheckItemId" parameterType="int" resultType="int">
+        SELECT COUNT(1) FROM t_checkgroup_checkitem WHERE checkitem_id=#{id}
+    </select>
+
+    <!--根据id删除检查项-->
+    <delete id="deleteById">
+        DELETE FROM t_checkitem WHERE id = #{id}
+    </delete>
+
+    <!--更新检查项-->
+    <update id="update">
+        UPDATE t_checkitem SET code = #{code},
+        name = #{name},
+        sex = #{sex},
+        age = #{age},
+        price = #{price},
+        type = #{type},
+        attention = #{attention},
+        remark = #{remark} WHERE id = #{id}
+    </update>
+
+    <!--查询总记录数-->
+    <select id="totalCount" resultType="Long">
+        SELECT COUNT(*) FROM t_checkitem
+    </select>
+
+    <!--插件分页查询检查项-->
+    <select id="findPage" resultType="com.wlr.health.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+        <if test="value != null and value.length > 0">
+            where code like #{value} or name like #{value}
+        </if>
+    </select>
+
+    <!--分页查询检查项-->
+    <select id="findPageNumber" resultType="com.wlr.health.pojo.CheckItem">
+        SELECT * FROM t_checkitem
+        <if test="queryString != null and queryString.length > 0">
+            where code like #{queryString} or name like #{queryString}
+        </if>
+        limit #{currentPage},#{pageSize}
+    </select>
+
+</mapper>
