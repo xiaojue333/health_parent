@@ -109,4 +109,10 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         //根据id删除组
         checkGroupDao.deleteById(id);
     }
+
+    //查询所有检查组数据
+    @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.findAll();
+    }
 }

@@ -63,4 +63,9 @@
     <delete id="deleteById" parameterType="int">
         DELETE FROM t_checkgroup WHERE id = #{id}
     </delete>
+
+    <!--查询所有检查组-->
+    <select id="findAll" resultType="com.wlr.health.pojo.CheckGroup">
+        SELECT * FROM t_checkgroup
+    </select>
 </mapper>

@@ -27,4 +27,8 @@ public interface CheckGroupService {
 
     //根据id删除检查组     逻辑错误抛自定义异常
     void deleteById(Integer id) throws MyException;
+
+    //查询所有检查组数据
+    List<CheckGroup> findAll();
+
 }

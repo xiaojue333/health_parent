@@ -67,7 +67,8 @@ public class CheckGroupController {
     }
 
     /**
-     *  修改检查组
+     * 修改检查组
+     *
      * @param checkGroup
      * @param checkItemIds
      * @return
@@ -80,8 +81,18 @@ public class CheckGroupController {
 
     //根据id删除检查组
     @GetMapping("deleteById")
-    public Result deleteById(Integer id){
+    public Result deleteById(Integer id) {
         checkGroupSercice.deleteById(id);
         return new Result(true, MessageConstant.DELETE_CHECKGROUP_SUCCESS);
+    }
+
+    /**
+     * 查询所有检查组数据
+     * @return
+     */
+    @GetMapping("findAll")
+    public Result findAll() {
+        List<CheckGroup> list = checkGroupSercice.findAll();
+        return new Result(true, MessageConstant.QUERY_CHECKGROUP_SUCCESS, list);
     }
 }
