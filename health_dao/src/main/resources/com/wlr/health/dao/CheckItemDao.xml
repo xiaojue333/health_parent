@@ -48,13 +48,13 @@
         SELECT COUNT(*) FROM t_checkitem
     </select>
 
-    <!--插件分页查询检查项-->
+    <!--&lt;!&ndash;插件分页查询检查项&ndash;&gt;
     <select id="findPage" resultType="com.wlr.health.pojo.CheckItem">
         SELECT * FROM t_checkitem
         <if test="value != null and value.length > 0">
             where code like #{value} or name like #{value}
         </if>
-    </select>
+    </select>-->
 
     <!--分页查询检查项-->
     <select id="findPageNumber" resultType="com.wlr.health.pojo.CheckItem">

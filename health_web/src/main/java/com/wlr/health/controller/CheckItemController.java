@@ -1,5 +1,6 @@
 package com.wlr.health.controller;
 
+
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.wlr.health.constant.MessageConstant;
 import com.wlr.health.entity.PageResult;
@@ -35,7 +36,7 @@ public class CheckItemController {
      *
      * @return
      */
-    @PostMapping("add")
+    @RequestMapping("add")
     public Result add(@RequestBody CheckItem checkItem) {
         checkItemService.add(checkItem);
         return new Result(true, MessageConstant.ADD_CHECKITEM_SUCCESS);

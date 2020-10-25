@@ -256,7 +256,7 @@
                     //检查是否符合条件
                     this.$refs['dataEditForm'].validate((valid) => {
                         if (valid) {
-                            axios.post("../checkItem/update.do", this.pagination).then(res => {//发送请求
+                            axios.post("/checkItem/update.do", this.pagination).then(res => {//发送请求
                                 var result = res.data;
                                 if (result.flag) {
                                     //隐藏编辑窗口
@@ -276,7 +276,7 @@
                     //检测是否符合条件
                     this.$refs['dataAddForm'].validate((valid) => {
                         if (valid) {
-                            axios.post("../checkItem/add.do", this.formData).then(res => {//发送请求
+                            axios.post("/checkItem/add.do", this.formData).then(res => {//发送请求
                                 var result = res.data;
                                 //隐藏新增窗口
                                 this.dialogFormVisible = false;
@@ -344,7 +344,7 @@
                         cancelButtonText: '取消',
                         type: 'warning'
                     }).then(() => {//选择确定则来到这里
-                        axios.post("../checkItem/delete.do", "id=" + row.id).then(res => {
+                        axios.post("/checkItem/delete.do", "id=" + row.id).then(res => {
                             var result = res.data;
                             if (result.flag) {
                                 this.$message.success(result.message);

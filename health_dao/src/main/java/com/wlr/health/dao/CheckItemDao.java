@@ -24,7 +24,7 @@ public interface CheckItemDao {
     Long totalCount();
 
     //插件按页码分页查询检查项
-    Page<CheckItem> findPage(String PageBean);
+    //Page<CheckItem> findPage(String PageBean);
 
     //按页码分页查询检查项
     List<CheckItem> findPageNumber(QueryPageBean queryPageBean);

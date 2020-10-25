@@ -1,8 +1,6 @@
 package com.wlr.health.service.impl;
 
 import com.alibaba.druid.util.StringUtils;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.wlr.health.dao.CheckItemDao;
 import com.wlr.health.entity.PageResult;
 import com.wlr.health.entity.QueryPageBean;
