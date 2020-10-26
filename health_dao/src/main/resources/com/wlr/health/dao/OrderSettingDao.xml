@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性：名称空间， 写接口的全限定名-->
+<mapper namespace="com.wlr.health.dao.OrderSettingDao">
+
+    <!--select标签用于插叙；  id属性值就是接口的方法名，
+        resultType ：返回值的类型
+                    如果是集合，写泛型即可；
+    -->
+
+    <!--根据日期获取数据库中的订单设置数据-->
+    <select id="findByDate" parameterType="date" resultType="com.wlr.health.pojo.OrderSetting">
+        SELECT * FROM t_ordersetting WHERE orderDate = #{orderDate}
+    </select>
+
+    <!--修改可预约人数-->
+    <update id="updateNumber" parameterType="com.wlr.health.pojo.OrderSetting">
+        UPDATE t_ordersetting SET number = #{number} WHERE orderDate = #{orderDate}
+    </update>
+
+    <!--添加新预约数据-->
+    <insert id="add" parameterType="com.wlr.health.pojo.OrderSetting">
+        insert into t_ordersetting (orderDate,number,reservations)
+        values(#{orderDate},#{number}, #{reservations})
+    </insert>
+
+    <!--获取当前年月份所有预约数据-->
+    <select id="findByMonth" parameterType="String" resultType="Map">
+        select CAST(DATE_FORMAT(orderDate,'%d') AS SIGNED) date,number,reservations from t_ordersetting where orderdate like #{month}
+    </select>
+
+
+</mapper>
